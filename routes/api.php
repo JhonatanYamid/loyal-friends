@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\categoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,9 @@ use App\Http\Controllers\Api\petController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/category', [categoryController::class, 'find']);
+
+Route::get('/category/{CategoryId}', [categoryController::class, 'findById']);
 
 Route::get('/pet/findByStatus', [petController::class, 'findByStatus']);
 
